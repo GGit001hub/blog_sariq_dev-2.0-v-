@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card" style="width: 40rem; margin: auto;">
+  {% if object.photo %}
+  <img src="{{ object.photo.url }}" class="card-img-top" alt="...">
+  {% endif %}
+  <div class="card-body">
+      <h3 class="card-title" style="text-align: center;">{{ object.title }}</h3>
+      <b class="card-text">{{ object.body | safe }}</b>
+      <p>Sana : {{ object.date }} | mualif : {{ object.author }}</p>
+      <!-- <p>{{ object.body }}</p> -->
+      <a href="{% url 'new_edit' article.pk %}">Tahrirlash</a>|
+      <a href="{% url 'new_delete' article.pk %}">O'chirish</a>|
+      <a href="{% url 'news' %}">Bosh sahifa</a>
+    </div>
+
+    <div class="card-body text-secondary">
+      <h6 class="card-title">Qoldirilgan izohlar</h6>
+      {% for coment in article.comments.all %}
+        <b class="card-text">{{ coment }}</b>
+        <p>{{ coment.author }} dan</p>
+      {% endfor %}
+    </div>
+  
+  </div>
+
+{% endblock content %}

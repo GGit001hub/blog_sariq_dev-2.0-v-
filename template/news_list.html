@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+<h2>Postlar ro'yxati</h2>
+{% block content %}
+<button type="submit" class="btn btn-outline-warning"><b><a href="{% url 'new_create' %}">Maqola qo'shish</a></b></button>
+    {% for new in object_list %}
+
+    <div class="card" style="width: 25rem; margin: auto;border-color: rgb(15, 208, 237);border-width: 0.1cm;border-radius: 0.5cm;">
+        <h5 class="card-title"><a href="{% url 'new_detail' new.pk %}">{{ new.title }}</a></h5>
+        {% if new.photo %}
+            <img src="{{ new.photo.url }}" class="card-img-top" alt="...">
+        {% endif %}
+        <div class="card-body">
+          <p class="card-text">{{ new.qisqacha }}</p>
+          <p><b>Sana</b> : {{ new.date }}</p>
+          <p><b>mualif</b> : {{ new.author }}</p>
+          <a href="{% url 'new_detail' new.pk %}" class="btn btn-primary">Batafsil ko'rish</a>
+        </div>
+      </div>
+    {% endfor %}<br>
+
+    
+{% endblock content %}
+

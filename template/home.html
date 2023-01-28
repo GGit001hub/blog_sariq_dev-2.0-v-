@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %} Bosh sahifa {% endblock title %}
+
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+    <br/>
+    <div class="jumbotron">
+        <h1 class="display-3">Assalom alaykum!</h1>
+        <p class="lead">Ilhomjon Abdullayev ning shaxsiy saytiga xush kelipsiz</p>
+        <hr class="my-4">
+        <p>Bu yerda siz pythondagi bazi kodlar ni bilmasangiz bilib olasiz. Bilsangiz takrorlab olasiz</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" style="color: rgb(12, 232, 26);" href="{% url 'news' %}" role="button">👁 Kodlarni Ko'rish</a>
+        </p>
+    </div>
+    {% else %}
+    <br/>
+    <div class="jumbotron">
+        <h1 class="display-3">Assalom alaykum!</h1>
+        <p class="lead">Ilhomjon Abdullayev ning shaxsiy saytiga xush kelipsiz</p>
+        <hr class="my-4">
+        <label style="color: red;">Kechirasiz siz saytga kirmagansiz. Iltimos saytga kiring</label>
+        <p class="lead">
+            <a class="btn btn-outline-success" href="{% url 'login' %}" role="button">Saytga kirish</a>
+            <a class="btn btn-outline-primary" href="{% url 'signup' %}" role="button">Ro'yxatdan o'tish</a>
+        </p>
+    </div>
+    {% endif %}
+
+{% endblock content %}

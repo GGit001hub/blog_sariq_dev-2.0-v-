@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <h2>Maqolani O'chirish</h2>
+    <form method="post"> {% csrf_token %}
+        {{ form|crispy}}
+        <p>rostanham " {{ object.title }} " nomi maqolani o'chirmoqchimisiz ?</p>
+        <button type="submit" class="btn btn-success">Ha</button>
+    </form>
+
+{% endblock content %}
